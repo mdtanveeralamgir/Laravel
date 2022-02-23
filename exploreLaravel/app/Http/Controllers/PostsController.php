@@ -8,7 +8,8 @@ class PostsController extends Controller
 {
     public function contact()
     {
-        return view('contact');
+        $people = ['Tanveer', 'Shamma', 'Aayid'];
+        return view('contact', compact('people'));
         //Path to contact page inside pages directory
         // return view('pages.contact');
         //or

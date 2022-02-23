@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
-</head>
-<body>
-    <p>This is the post page with id {{$id}}, {{$name}}</p>
-</body>
-</html>
+<!-- Importing the views/layouts/app -->
+@extends('layouts.app')
+{{-- Importing the views/layouts/app --}}
+@section('content')
+{{-- Putting content inside views/layouts/app --}}
+<p>This is post page</p>
+<p>name is {{$name}}</p>
+<p>id is {{$id}}</p>
+
+{{-- Closing the @section('content') --}}
+@stop
+{{-- or close different way 
+    @endsection  --}}
+
