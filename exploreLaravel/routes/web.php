@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//passing variables into controller
+//only one variable can be passed
+// Route::get('/post/{id}', [PostsController::class, 'index']);
+
+//creating CRUD route all together
+Route::resources([
+    'posts' => PostsController::class,
+]);
+
