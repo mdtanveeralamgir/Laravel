@@ -7,12 +7,11 @@
     <title>Test purpose</title>
 </head>
 <body>
-    var_dump($results);
     <ul>
     @foreach($results as $result)
-    
-    <li>$result->title</li>
-    <li>$result->body</li>
+    <li>{{$result->id}}</li>
+    <li>{{$result->title}}</li>
+    <li>{{$result->body}}</li>
     @endforeach
     </ul>
 </body>
