@@ -19,4 +19,16 @@ class PostDBController extends Controller
         $results = DB::select('SELECT * FROM post WHERE id = ?', [$id]);
         return view('test', compact("results"));
     }
+
+    public function update($id)
+    {
+        $result = DB::update('UPDATE post SET title = "updated title" WHERE id = ?', [$id]);
+        return $result ? "Successfully updated" : "Couldn't update";
+    }
+
+    public function delete($id)
+    {
+        $result = DB::delete('DELETE FROM post WHERE id = ?', [$id]);
+        return $result ? "Successfully deleted" : "Couldn't delete";
+    }
 }

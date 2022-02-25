@@ -17,3 +17,7 @@ use App\Http\Controllers\PostDBController;
 Route::get('/insert', [PostDBController::class, 'index']);
 
 Route::get('/fetch/{id}', [PostDBController::class, 'read']);
+
+Route::get('/update/{id}', [PostDBController::class, 'update']);
+
+Route::get('/delete/{id}', [PostDBController::class, 'delete']);
