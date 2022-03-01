@@ -14,11 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->increments('id')->change();
-            $table->string('title');
-            $table->text('body');
-            // $table->timestamp('created_at')->nullable();
-            // $table->timestamp('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 
@@ -30,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropCloumn('deleted_at');
         });
     }
 };

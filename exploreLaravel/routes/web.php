@@ -74,3 +74,28 @@ Route::get('/shortd ', function(){
     //with condition
     Post::where('id', 2)->delete();
 });
+
+//soft delete
+Route::get('/softdelete', function(){
+    Post::find(3)->delete();
+});
+
+//fetch with deleted data
+Route::get('/deleted', function(){
+    return Post::withTrashed()->where('id', 3)->get();
+});
+
+//fetch only deleted data
+Route::get('/onlytrashed', function(){
+    return Post::onlyTrashed()->where('id', 3)->get();
+});
+
+//restore deleted data
+Route::get('/restore', function(){
+    return Post::withTrashed()->where('id', 3)->restore();
+});
+
+//delete permanently
+Route::get('/forcedelete', function(){
+    return Post::onlyTrashed()->where('id', 3)->forceDelete();
+});
