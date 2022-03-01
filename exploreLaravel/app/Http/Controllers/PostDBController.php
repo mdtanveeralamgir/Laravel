@@ -9,7 +9,7 @@ class PostDBController extends Controller
 {
     public function index()
     {
-        DB::insert('insert into post(title, body) values(?,?)', ['Laravel', 'Laravel is a PHP framework']);
+        DB::insert('insert into posts(title, body) values(?,?)', ['Laravel', 'Laravel is a PHP framework']);
          return "working";
         // echo phpinfo();
     }
