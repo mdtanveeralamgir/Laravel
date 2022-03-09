@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use App\Models\Address;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +13,6 @@ use App\Models\Address;
 |
 */
 
-Route::get('/insert', function(){
-    $user = User::find(1);
-    $address = new Address(['full_address' => '3600 rue ovide']);
-
-    $user->address()->save($address);
+Route::get('/', function () {
+    return view('welcome');
 });
