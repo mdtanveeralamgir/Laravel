@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/dates', function(){
+    $date = new DateTime('+1 week');
+    echo $date->format('d-m-y') . '<br>';
+    echo Carbon::now()->diffForHumans();
+});
+
+
+Route::get('/getname', function(){
+    $user = User::find(1);
+
+    echo $user->name;
 });
