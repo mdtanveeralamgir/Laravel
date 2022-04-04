@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dates', function(){
-    $date = new DateTime('+1 week');
-    echo $date->format('d-m-y') . '<br>';
-    echo Carbon::now()->diffForHumans();
-});
-
+Route::resource('/posts', PostsController::class);
 
 Route::get('/getname', function(){
     $user = User::find(1);
 
     echo $user->name;
+});
+
+Route::get('/setname', function(){
+    $user = User::find(1);
+    $user->name = "shamma";
+    $user->save();
+    return redirect('/getname');
 });

@@ -42,8 +42,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Accessors (DB to view)
     public function getNameAttribute($value)
     {
         return ucwords($value);
+    }
+    
+    //Mutator (saving to db)
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords($value);
     }
 }
