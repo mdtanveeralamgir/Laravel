@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\Role::factory(10)->create();
+        //This will insert into the posts table as well
+        \App\Models\User::factory()->count(10)->hasPosts(1)->create();
+        $this->call([
+            RoleSeeder::class,
+            RoleUserSeeder::class
+        ]);
     }
 }
