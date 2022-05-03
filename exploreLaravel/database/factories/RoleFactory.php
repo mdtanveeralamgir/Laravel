@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
  */
-class PostFactory extends Factory
+class RoleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,11 +16,8 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-
         return [
-            'title' => $this->faker->sentence(),
-            'content' => $this->faker->paragraph(),
-            'path' => $this->faker->word() . '.jpg',
+            'name' => $this->faker->randomElement(['Admin', 'Tech', 'Manager', 'User']),
         ];
     }
 }
