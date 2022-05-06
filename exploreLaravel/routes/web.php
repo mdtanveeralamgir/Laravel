@@ -14,10 +14,17 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Route::get('/rand', function(){
    $user = User::max('id');
    return $user;
 });
+Route::get('/admin', function(){
+   return view('admin.index');
+});
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
