@@ -17,5 +17,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/post/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post');
+
+
+// User needs to log in before going to any route under this function
+Route::middleware('auth')->group(function(){
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+    Route::post('/admin/posts', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+    Route::get('/admin/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+});
