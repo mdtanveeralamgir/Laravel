@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,20 @@ class PostController extends Controller
     {
         return view('admin.posts.create');
     }
-    public function store()
+    public function store(StorePostRequest $request)
     {
-        auth()->user();
-        dd(request()->all());
-//        return view('admin.posts.create');
+        $validated = $request->validated();
+
+        //If the file exists then store method will save the file in a dir called
+        //storage/app/images
+        if($request->post_image)
+        {
+            $validated['post_image'] = $request->post_image->store('images');
+        }
+
+        auth()->user()->posts()->create($validated);
+
+        return back();
+
     }
 }
