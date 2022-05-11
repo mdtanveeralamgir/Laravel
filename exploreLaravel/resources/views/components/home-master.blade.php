@@ -8,13 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Post - Start Bootstrap Template</title>
+    <title>Blog Home - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+{{--    <link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
+
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/blog-post.css')}}" rel="stylesheet">
+    <link href="{{asset('css/blog-home.css')}}" rel="stylesheet">
 
 </head>
 
@@ -35,13 +37,13 @@
                     </a>
                 </li>
                 @if(Auth::check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
+                </li>
                 @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -62,8 +64,8 @@
 
     <div class="row">
 
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
             @yield('content')
         </div>
 
