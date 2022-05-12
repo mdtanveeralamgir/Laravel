@@ -25,4 +25,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
     Route::post('/admin/posts', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
     Route::get('/admin/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+    Route::get('/admin/posts', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
 });
