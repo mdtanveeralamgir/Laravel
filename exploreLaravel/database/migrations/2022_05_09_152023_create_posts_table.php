@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('post_image')->nullable();
             $table->text('body');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

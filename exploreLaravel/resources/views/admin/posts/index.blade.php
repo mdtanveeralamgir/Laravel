@@ -17,6 +17,7 @@
                                 <th>Body</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
+                                <th>Modify</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -28,6 +29,7 @@
                                 <th>Body</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
+                                <th>Modify</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -40,6 +42,9 @@
                                     <td>{{Str::limit($post->body, '50', '..')}}</td>
                                     <td>{{$post->created_at->diffForHumans()}}</td>
                                     <td>{{$post->updated_at->diffForHumans()}}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="{{route('post.edit', $post->id)}}">Edit</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
