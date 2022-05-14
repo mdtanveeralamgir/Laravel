@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -33,7 +34,14 @@ class PostController extends Controller
             $validated['post_image'] = $request->post_image->store('images');
         }
 
-        auth()->user()->posts()->create($validated);
+        if(auth()->user()->posts()->create($validated))
+        {
+            Helper::createFlashMessage("Post Has been created successfully", "success");
+        }
+        else
+        {
+            Helper::createFlashMessage("Sorry something went wrong", "danger");
+        }
 
         return redirect()->route('post.index');
 
