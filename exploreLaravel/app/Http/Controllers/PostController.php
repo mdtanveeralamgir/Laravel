@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Auth()->user()->posts;
         return view('admin.posts.index', ['posts' => $posts]);
     }
     //Take the id from URL and get the related post and pass it to the function
@@ -64,6 +64,7 @@ class PostController extends Controller
         }
 
 //        auth()->user()->posts()->update($validated);
+        $this->authorize('update', $post);
         $post->update($validated);
 
         return back();
