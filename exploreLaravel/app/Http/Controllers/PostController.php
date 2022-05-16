@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();//Auth()->user()->posts;
+        $posts = Auth()->user()->posts;
         return view('admin.posts.index', ['posts' => $posts]);
     }
     //Take the id from URL and get the related post and pass it to the function
@@ -21,6 +21,7 @@ class PostController extends Controller
     }
     public function create()
     {
+        $this->authorize('create', Post::class);
         return view('admin.posts.create');
     }
     public function store(StorePostRequest $request)
@@ -65,7 +66,6 @@ class PostController extends Controller
             $validated['post_image'] = $request->post_image->store('images');
         }
 
-//        auth()->user()->posts()->update($validated);
         $this->authorize('update', $post);
         $post->update($validated);
 
@@ -74,6 +74,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
        $post->delete();
        return redirect()->route('post.index');
     }

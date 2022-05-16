@@ -41,7 +41,9 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+        //check if the user making request to create a post
+        //is the logged in user
+        return $user->is(Auth()->user());
     }
 
     /**
@@ -65,6 +67,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
+        return $user->id === $post->user_id;
     }
 
     /**
