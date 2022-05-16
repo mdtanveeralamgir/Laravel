@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Auth()->user()->posts;
+        $posts = Post::all();//Auth()->user()->posts;
         return view('admin.posts.index', ['posts' => $posts]);
     }
     //Take the id from URL and get the related post and pass it to the function
@@ -49,7 +49,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', ['post' => $post]);
+        //using can method for policy
+        if(auth()->user()->can('view', $post))
+            return view('admin.posts.edit', ['post' => $post]);
     }
 
     public function update(StorePostRequest $request, Post $post)

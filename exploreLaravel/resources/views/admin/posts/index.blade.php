@@ -44,7 +44,10 @@
                                     <td>{{$post->created_at->diffForHumans()}}</td>
                                     <td>{{$post->updated_at->diffForHumans()}}</td>
                                     <td>
-                                        <a class="btn btn-info" href="{{route('post.edit', $post->id)}}">Edit</a>
+                                        {{-- calling "update" method from PostPolicy so only auth user can see Edit button--}}
+{{--                                        @can('update', $post)--}}
+                                                <a class="btn btn-info" href="{{route('post.edit', $post->id)}}">Edit</a>
+{{--                                        @endcan--}}
                                     </td>
                                 </tr>
                             @endforeach
