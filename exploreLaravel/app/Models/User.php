@@ -46,4 +46,33 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+
+//    public function test()
+//    {
+//        $result = '';
+//        foreach ($this->roles as $role) {
+//            return $role->name ;
+//        }
+//        return $result;
+//    }
+
+    public function userHasRole(...$roleName)
+    {
+        foreach ($this->roles as $role)
+        {
+            if(in_array($role->name, $roleName))
+                return true;
+        }
+
+        return false;
+    }
 }
