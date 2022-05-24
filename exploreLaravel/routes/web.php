@@ -29,4 +29,5 @@ Route::middleware('auth')->group(function(){
     Route::put('/admin/posts/{post}', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');
     Route::delete('/admin/posts/{post}', [App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
     Route::get('/admin/{post}/posts', [App\Http\Controllers\PostController::class, 'edit'])->middleware('can:update,post')->name('post.edit');
+    Route::get('admin/users/{user}/profile', [App\Http\Controllers\UserController::class, 'show'])->name('user.profile.show');
 });
