@@ -13,3 +13,15 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/resources/views/vendor/pagination/bootstrap-4.blade.php
+/resources/views/vendor/pagination/bootstrap-5.blade.php
+/resources/views/vendor/pagination/default.blade.php
+/resources/views/users/profile.blade.php
+/resources/views/vendor/pagination/semantic-ui.blade.php
+/resources/views/vendor/pagination/simple-bootstrap-4.blade.php
+/resources/views/vendor/pagination/simple-bootstrap-5.blade.php
+/resources/views/vendor/pagination/simple-default.blade.php
+/resources/views/vendor/pagination/simple-tailwind.blade.php
+/resources/views/vendor/pagination/tailwind.blade.php
+/app/Http/Controllers/UserController.php
+/public/.DS_Store
