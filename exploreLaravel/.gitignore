@@ -16,7 +16,7 @@ yarn-error.log
 /resources/views/vendor/pagination/bootstrap-4.blade.php
 /resources/views/vendor/pagination/bootstrap-5.blade.php
 /resources/views/vendor/pagination/default.blade.php
-/resources/views/users/profile.blade.php
+/resources/views/admin/users/profile.blade.php
 /resources/views/vendor/pagination/semantic-ui.blade.php
 /resources/views/vendor/pagination/simple-bootstrap-4.blade.php
 /resources/views/vendor/pagination/simple-bootstrap-5.blade.php
