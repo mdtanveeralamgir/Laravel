@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
+        'avatar',
     ];
 
     /**
@@ -70,5 +72,29 @@ class User extends Authenticatable
                 return true;
         }
         return false;
+    }
+
+//    public function getAavatarAttribute($value)
+//    {
+//        if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE)
+//        {
+//            return $value;
+//        }
+//        return asset('storage/' . $value);
+//    }
+
+    //accessor for avatar
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value)
+            {
+                if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE)
+                {
+                    return $value;
+                }
+                return asset('storage/' . $value);
+            }
+        );
     }
 }
