@@ -12,7 +12,10 @@ class PostController extends Controller
     public function index()
     {
         //fetching the post with pagination (showing 5 posts at a time)
-        $posts = Auth()->user()->posts()->paginate(5);
+        if(auth()->user()->userHasRole('Admin'))
+            $posts = Post::all();
+        else
+            $posts = Auth()->user()->posts();
         return view('admin.posts.index', ['posts' => $posts]);
     }
     //Take the id from URL and get the related post and pass it to the function

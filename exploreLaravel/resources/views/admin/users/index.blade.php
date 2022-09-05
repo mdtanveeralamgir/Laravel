@@ -6,7 +6,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="usersTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -27,6 +27,7 @@
                             <th>email</th>
                             <th>Created at</th>
                             <th>Updated at</th>
+                            <th>Delete</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -39,6 +40,13 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->created_at->diffForHumans()}}</td>
                                 <td>{{$user->updated_at->diffForHumans()}}</td>
+                                <td>
+                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="DELETE">
+                                    </form>
+                                </td>
 {{--                                <td>--}}
 {{--                                    --}}{{-- calling "update" method from PostPolicy so only auth user can see Edit button--}}
 {{--                                    --}}{{--                                        @can('update', $post)--}}
@@ -59,6 +67,6 @@
             <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
             <!-- Page level custom scripts -->
-            {{--            <script src="{{asset('js/demo/datatables-demo.js')}}"></script>--}}
+            <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
         @endsection
 </x-admin-master>
